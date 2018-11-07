@@ -4,21 +4,21 @@
     <h2>Burgers Ready:</h2>
 
     <div>
-        {{ #each burgers }}
-            {{ #unless devoured }}
+        {{#each burgers }}
+            {{#unless devoured }}
                 {{> burgers/burger-block devoured=false }}
-            {{ /unless }}
-        {{ .each }}
+            {{/unless }}
+        {{/each }}
     </div>
 </div>
 
 
     <div>
-        {{ #each burgers }}
-            {{ #if devoured }}
+        {{#each burgers }}
+            {{#if devoured }}
                 {{> burgers/burger-block devoured=true }}
-            {{ /if }}
-        {{ /each }}
+            {{/if }}
+        {{/each }}
     </div>
 
     <div id="addBurgerContainer" class="container">

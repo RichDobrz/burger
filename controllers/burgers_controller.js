@@ -1,14 +1,16 @@
-const express = require("express")
-const burger = require("../models/burger.js")
-const router = express.Router()
+var express = require("express");
+
+var router = express.Router();
+
+var burger = require("../models/burger.js")
 
 router.get("/", function(req, res) {
     burger.selectAll(function(data){
-        const hbObject = {
+        const hbsObject = {
             burgers: data
         }
-        console.log(hbObject)
-        res.render("index", hbObject)
+        console.log(res)
+        res.render("index", hbsObject)
     })
 })
 
