@@ -1,0 +1,25 @@
+body {
+    width: 33%;
+    margin: 0 auto;
+}
+
+h1  {
+    text-align: center;
+}
+
+.ready_or_devoured_list {
+    display: grid;
+    grid-template-columns: auto auto
+}
+
+img {
+    margin: 0 25% 0 25%;
+}
+
+.container  {
+    margin: 0 auto;
+}
+
+.add_burger_container {
+    text-align: center
+}
