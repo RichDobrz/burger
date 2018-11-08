@@ -1,20 +1,20 @@
-const connection = require("../config/connection.js")
+var connection = require("../config/connection.js")
 
-const questionMark = num => {
-    let arr = []
+var questionMark = num => {
+    var arr = []
 
-    for (let i = 0; i < num; i++) {
+    for (var i = 0; i < num; i++) {
         arr.push("?")
     }
 
     return arr.toString()
 }
 
-const objToSql = object => {
-    let arr = []
+var objToSql = function(ob) {
+    var arr = []
 
-    for (let key in object) {
-        let value = object[key]
+    for (var key in ob) {
+        var value = ob[key]
         if (Object.hasOwnProperty.call(ob, key)) {
             if(typeof value === "string" && value.indexOf(" ") >= 0)  {
                 value = "'" + value + "'"
@@ -25,9 +25,9 @@ const objToSql = object => {
     return arr.toString()
 }
 
-const orm = {
+var orm = {
     selectAll: function(tableInput, cb) {
-        const queryString = ("SELECT * FROM " + tableInput + ";")
+        var queryString = ("SELECT * FROM " + tableInput + ";")
         connection.query(queryString, function(err, result) {
             if(err) {
                 throw err
@@ -37,18 +37,18 @@ const orm = {
     },
 
     insertOne: function(table, cols, vals, cb) {
-        const queryString = "INSERT INTO" + table
+        var queryString = "INSERT INTO " + table;
         
-        queryString += " ("
-        queryString += cols.toString()
-        queryString += ") "
-        queryString += "VALUES ("
-        queryString += questionMark(vals.length)
+        queryString += " (";
+        queryString += cols.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += questionMark(vals.length);
         queryString += ") "
         
         console.log("queryString")
 
-        connection.query(queryString, vals, (err, result) => {
+        connection.query(queryString, vals, function(err, result) {
             if (err) {
                 throw err
             }
@@ -57,10 +57,9 @@ const orm = {
     },
 
     updateOne: function(table, objColVals, condition, cb) {
-        const queryString = "UPDATE" + table
+        var queryString = "UPDATE " + table
 
-        queryString += " SET "
-        queryString += objToSql(objColVals)
+        queryString += " SET devoured = true"
         queryString += " WHERE "
         queryString += condition
         

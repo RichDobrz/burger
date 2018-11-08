@@ -1,6 +1,7 @@
 <h1> Burgers!</h1>
 
 <div id="burgerContainer" class="container">
+    <img src="/img/burger.png" alt="">
     <h2>Burgers Ready:</h2>
 
     <div>
@@ -13,7 +14,9 @@
 </div>
 
 
-    <div>
+    <div class="devouredBurgs">
+        <h2>Burgers you devoured:</h2>
+
         {{#each burgers }}
             {{#if devoured }}
                 {{> burgers/burger-block devoured=true }}
@@ -23,13 +26,12 @@
 
     <div id="addBurgerContainer" class="container">
         <h2>Add a Burger</h2>
-        <img src="" alt="Burger">
         <form class="create-form">
             <div class="form-group">
                 <label for="burgerName"></label>
-                <input type="text" id="burgerName">
+                <input type="text" id="burgerName" name="burgerName">
             </div>
-            <button type="submit">Add a Burger</button>
+            <button type="submit" class="submit">Add a Burger</button>
         </form>
     </div>
 
